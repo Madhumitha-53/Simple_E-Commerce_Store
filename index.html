@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head><title>Simple E-commerce</title></head>
+<body>
+  <h1>Products</h1>
+  <div id="products"></div>
+  <script>
+    fetch('http://localhost:5000/products')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('products').innerHTML = data.map(p => 
+          `<div><h3>${p.name}</h3><p>${p.description}</p><strong>$${p.price}</strong></div>`).join('');
+      });
+  </script>
+</body>
+</html>
